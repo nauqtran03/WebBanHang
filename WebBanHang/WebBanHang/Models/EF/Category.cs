@@ -17,12 +17,18 @@ namespace WebBanHang.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Category name is required")]
         [StringLength(150)]
         public string Title { get; set; }
+        [StringLength(4000)]
         public string Description { get; set; }
+        public string Alias { get; set; }
+        [StringLength(250)]
         public string SeoTitle { get; set; }
+        [StringLength(250)]
         public string SeoDescription { get; set; }
+        [StringLength(250)]
         public string SeoKeywords { get; set; }
         public int Position { get; set; }
         public ICollection<New> News { get; set; }

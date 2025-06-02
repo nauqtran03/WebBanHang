@@ -13,9 +13,10 @@ namespace WebBanHang.Models.EF
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "The news title is required.")]
         [StringLength(150)]
         public string Title { get; set; }
+        public string Alias { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
         public string Image {  get; set; }
