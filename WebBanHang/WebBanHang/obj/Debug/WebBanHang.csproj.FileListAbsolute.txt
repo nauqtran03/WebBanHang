@@ -224,3 +224,5 @@ D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.UpdateData2.resources
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\CKFinder.dll
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\CKFinder.pdb
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.news.resources
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.data.resources

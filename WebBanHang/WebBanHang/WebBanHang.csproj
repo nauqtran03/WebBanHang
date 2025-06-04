@@ -202,6 +202,14 @@
     <Compile Include="Migrations\202506020931325_UpdateData2.Designer.cs">
       <DependentUpon>202506020931325_UpdateData2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506030750443_news.cs" />
+    <Compile Include="Migrations\202506030750443_news.Designer.cs">
+      <DependentUpon>202506030750443_news.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506030818027_data.cs" />
+    <Compile Include="Migrations\202506030818027_data.Designer.cs">
+      <DependentUpon>202506030818027_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\Filter.cs" />
@@ -3135,6 +3143,7 @@
     <Content Include="Content\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Areas\Admin\Views\New\Edit.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -3228,6 +3237,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506020931325_UpdateData2.resx">
       <DependentUpon>202506020931325_UpdateData2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506030750443_news.resx">
+      <DependentUpon>202506030750443_news.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506030818027_data.resx">
+      <DependentUpon>202506030818027_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

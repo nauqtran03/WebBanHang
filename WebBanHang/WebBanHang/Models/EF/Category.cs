@@ -31,6 +31,8 @@ namespace WebBanHang.Models.EF
         [StringLength(250)]
         public string SeoKeywords { get; set; }
         public int Position { get; set; }
+        public bool IsActive { get; set; }
+
         public ICollection<New> News { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
