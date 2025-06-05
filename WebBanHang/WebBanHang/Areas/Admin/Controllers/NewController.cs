@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
 using WebBanHang.Models.EF;
+using PagedList;
 
 namespace WebBanHang.Areas.Admin.Controllers
 {
@@ -12,9 +13,13 @@ namespace WebBanHang.Areas.Admin.Controllers
     {
         private ApplicationDbContext _dbConnect = new ApplicationDbContext();
         // GET: Admin/News
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var item = _dbConnect.News.OrderByDescending(x=>x.Id).ToList();
+            int pageSize = 10;
+            int pageNumber = page ?? 1;
+
+            var item = _dbConnect.News.OrderByDescending(x => x.Id).ToPagedList(pageNumber, pageSize);
+
             return View(item);
         }
         public ActionResult Add()

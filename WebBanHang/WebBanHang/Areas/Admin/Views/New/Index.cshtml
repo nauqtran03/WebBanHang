@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBanHang.Models.EF.New>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.PagedList<WebBanHang.Models.EF.New>
 @{
     ViewBag.Title = "List news";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -14,7 +16,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admim/home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
                     <li class="breadcrumb-item active">News</li>
                 </ol>
             </div>
@@ -55,7 +57,7 @@
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                            
+
                             <tr id="trow_@item.Id">
                                 <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
                                 <td>@i</td>
@@ -82,6 +84,7 @@
                     }
                 </tbody>
             </table>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -114,7 +117,7 @@
                     i++;
                 });
                 if (str.length > 0) {
-                    var conf =confirm("Do you want to delete these records?");
+                    var conf = confirm("Do you want to delete these records?");
                     if (conf === true) {
                         $.ajax({
                             url: '/admin/new/deleteAll',

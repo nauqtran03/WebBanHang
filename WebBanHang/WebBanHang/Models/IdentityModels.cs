@@ -32,7 +32,7 @@ namespace WebBanHang.Models
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Contact> Contacts{ get; set; }
         public DbSet<New> News { get; set; }
-        public DbSet<Post> Post { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails{ get; set; }
         public DbSet<Product> Products { get; set; }
