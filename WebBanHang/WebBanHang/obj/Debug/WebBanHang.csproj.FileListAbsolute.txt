@@ -231,3 +231,4 @@ D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\PagedList.dll
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\PagedList.Mvc.dll
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\PagedList.xml
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\PagedList.Mvc.xml
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.editProduct.resources

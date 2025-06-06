@@ -13,13 +13,21 @@ namespace WebBanHang.Areas.Admin.Controllers
     {
         private ApplicationDbContext _dbConnect = new ApplicationDbContext();
         // GET: Admin/News
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchText,int? page)
         {
             int pageSize = 10;
             int pageNumber = page ?? 1;
-
-            var item = _dbConnect.News.OrderByDescending(x => x.Id).ToPagedList(pageNumber, pageSize);
-
+            ViewBag.searchText = searchText;
+            var query = _dbConnect.News.AsQueryable();
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                string normallizedSearch = searchText.Replace(" ","-");
+                query = query.Where(x => x.Title.Contains(searchText)|| x.Alias.Contains(normallizedSearch));
+                ViewBag.searchText = searchText;
+            }
+            var item = query.OrderByDescending(x => x.Id).ToPagedList(pageNumber, pageSize);
+            ViewBag.pageSize = pageSize;
+            ViewBag.pageNumber = pageNumber;
             return View(item);
         }
         public ActionResult Add()

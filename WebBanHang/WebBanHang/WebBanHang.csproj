@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +221,10 @@
     <Compile Include="Migrations\202506050619459_ChangeLengthModel.cs" />
     <Compile Include="Migrations\202506050619459_ChangeLengthModel.Designer.cs">
       <DependentUpon>202506050619459_ChangeLengthModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506060237461_editProduct.cs" />
+    <Compile Include="Migrations\202506060237461_editProduct.Designer.cs">
+      <DependentUpon>202506060237461_editProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3159,6 +3164,8 @@
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Add.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -3261,6 +3268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506050619459_ChangeLengthModel.resx">
       <DependentUpon>202506050619459_ChangeLengthModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506060237461_editProduct.resx">
+      <DependentUpon>202506060237461_editProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
