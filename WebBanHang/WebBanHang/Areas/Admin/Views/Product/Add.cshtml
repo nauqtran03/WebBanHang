@@ -71,35 +71,74 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Product code</label>
-                                            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control"})
+                                            @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Product category</label>
+                                            @Html.DropDownListFor(x => x.ProductCategoryId, ViewBag.ProductCategory as SelectList,"-Select product category-", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.ProductCategoryId, null, new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Description</label>
-                                            @Html.TextBoxFor(x => x.Description, new { @class = "form-control"})
+                                            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Product detail</label>
-                                            @Html.TextBoxFor(x => x.Deatail, new { @class = "form-control"})
-                                            @Html.ValidationMessageFor(x => x.Deatail, null, new { @class = "text-danger" })
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                            @Html.TextBoxFor(x => x.Detail, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(x => x.Detail, null, new { @class = "text-danger" })
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-4">
                                                 <label for="exampleInputEmail1">Quantity</label>
                                                 @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-4">
                                                 <label for="exampleInputEmail1">Price</label>
                                                 @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-dangeSr" })
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-4">
                                                 <label for="exampleInputEmail1">Price sale</label>
                                                 @Html.TextBoxFor(x => x.PriceSale, new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
                                             </div>
                                         </div>
+                                        <div class="row mb-4">
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        @Html.CheckBoxFor(x => x.IsActive, new { @class = "custom-control-input", @id = "IsActiveCheckbox", @checked = "checked" })
+                                                        <label for="IsActiveCheckbox" class="custom-control-label">Status</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        @Html.CheckBoxFor(x => x.IsHome, new { @class = "custom-control-input", @id = "IsHomeCheckbox" })
+                                                        <label for="IsHomeCheckbox" class="custom-control-label">Hot</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        @Html.CheckBoxFor(x => x.IsFeature, new { @class = "custom-control-input", @id = "IsFeatureCheckbox" })
+                                                        <label for="IsFeatureCheckbox" class="custom-control-label">Featured</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox">
+                                                        @Html.CheckBoxFor(x => x.IsSale, new { @class = "custom-control-input", @id = "IsSaleCheckbox" })
+                                                        <label for="IsSaleCheckbox" class="custom-control-label">Promotion</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.tab-pane -->
@@ -203,49 +242,26 @@
                                     <div class="tab-pane" id="settings">
                                         <form class="form-horizontal">
                                             <div class="form-group row">
-                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                                <label for="inputName" class="col-sm-2 col-form-label">SEO title</label>
                                                 <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                                    @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @placeholder="Enter seo title"})
+                                                    @Html.ValidationMessageFor(x => x.SeoTitle, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                                <label for="inputEmail" class="col-sm-2 col-form-label">SEO keywords</label>
                                                 <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                                    @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", @placeholder = "Enter seo keywords" })
+                                                    @Html.ValidationMessageFor(x => x.SeoKeywords, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                                                <label for="inputName2" class="col-sm-2 col-form-label">SEO Description</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                                                    @Html.TextBoxFor(x => x.SeoDescription, new { @class = "form-control", @placeholder = "Enter seo description" })
+                                                    @Html.ValidationMessageFor(x => x.SeoDescription, null, new { @class = "text-danger" })
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                                </div>
-                                            </div>
+                                            </div>                               
                                         </form>
                                     </div>
                                     <!-- /.tab-pane -->

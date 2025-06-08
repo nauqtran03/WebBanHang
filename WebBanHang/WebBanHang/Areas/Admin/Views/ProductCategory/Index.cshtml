@@ -1,0 +1,187 @@
+﻿
+@model IEnumerable<WebBanHang.Models.EF.ProductCategory>
+@{
+    ViewBag.Title = "List news";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Manage news</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                    <li class="breadcrumb-item active">Product category</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">List product category</h3>
+
+            <div class="card-tools">
+                <a href="/admin/productcategory/add" class="btn btn-primary">Add new</a>
+                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Delete</a>
+            </div>
+        </div>
+        <div class="card-body">
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="SelectedAll" /></th>
+                        <th>Index</th>
+                        <th>Title</th>
+                        <th>Creation date</th>
+                        <th>Status</th>
+                        <th style="width:150px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        //var i = (ViewBag.PageNumber - 1) * ViewBag.PageSize + 1;
+                        var i = 1;
+                        foreach (var item in Model)
+                        {
+                            //var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+
+                            <tr id="trow_@item.Id">
+                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                <td>@i</td>
+                                <td>@item.Title</td>
+                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                @*<td class="text-center">
+                                        <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                    </td>*@
+                                <td>
+                                    <a href="/admin/productcategory/edit/@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="#" data-id="@item.Id" class="btn btn-sm btn-danger btnDelete">Delete</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">There are no records</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '#BtnDeleteAll', function (e) {
+                e.preventDefault();
+                var str = "";
+                var i = 0;
+
+                // Chỉ lấy các checkbox đã được chọn
+                var checkbox = $(this).parents('.card').find('input.cbkItem:checked');
+
+                checkbox.each(function () {
+                    var _id = $(this).val();
+                    if (i === 0) {
+                        str += _id;
+                    } else {
+                        str += "," + _id;
+                    }
+                    i++;
+                });
+                if (str.length > 0) {
+                    var conf = confirm("Do you want to delete these records?");
+                    if (conf === true) {
+                        $.ajax({
+                            url: '/admin/new/deleteAll',
+                            type: 'POST',
+                            data: { ids: str },
+                            success: function (rs) {
+                                if (rs.success) {
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+            $('body').on('change', '#SelectedAll', function () {
+                var checkStatus = this.checked;
+                var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
+                checkbox.each(function () {
+                    this.checked = checkStatus;
+                    if (this.checked) {
+                        checkbox.attr('selected', 'check');
+                    } else {
+                        checkbox.attr('selected', '');
+                    }
+                });
+            });
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var conf = confirm("Do you want to deleted this record?");
+                if (conf === true) {
+                    $.ajax({
+                        url: '/admin/new/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+            });
+
+            $('body').on('click', '.btnActive', function (e) {
+                e.preventDefault();
+                var btn = $(this); // <-- Đã sửa đúng
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/new/IsActive',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isActive) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            }
+                            else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

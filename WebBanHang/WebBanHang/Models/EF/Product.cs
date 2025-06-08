@@ -25,13 +25,14 @@ namespace WebBanHang.Models.EF
         public int ProductCategoryId {  get; set; }
         public string Description { get; set; }
         [AllowHtml]
-        public string Deatail { get; set; }
+        public string Detail { get; set; }
         [StringLength(250)]
         public string Image {  get; set; }
         public decimal Price { get; set; }
         public decimal PriceSale { get; set; }
         public bool IsHome { get; set; }
         public bool IsSale {  get; set; }
+        public bool IsFeature {  get; set; }
         public int Quantity { get; set; }
         [StringLength(250)]
         public string SeoTitle { get; set; }
