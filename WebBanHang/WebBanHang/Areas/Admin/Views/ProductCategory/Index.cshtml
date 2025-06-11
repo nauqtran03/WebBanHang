@@ -5,7 +5,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/productcategory" class="nav-link">Product category</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/productcategory/index" class="nav-link">Index</a>
+        </li>
+    </ul>
+}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -37,15 +52,15 @@
             </div>
         </div>
         <div class="card-body">
-            
+
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" id="SelectedAll" /></th>
+                        @*<th><input type="checkbox" id="SelectedAll" /></th>*@
                         <th>Index</th>
+                        <th>Icon</th>
                         <th>Title</th>
                         <th>Creation date</th>
-                        <th>Status</th>
                         <th style="width:150px"></th>
                     </tr>
                 </thead>
@@ -59,8 +74,9 @@
                             //var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
 
                             <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                @*<td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>*@
                                 <td>@i</td>
+                                <td><img src="@item.Icon" width="70" /></td>
                                 <td>@item.Title</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 @*<td class="text-center">
@@ -98,57 +114,57 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $('body').on('click', '#BtnDeleteAll', function (e) {
-                e.preventDefault();
-                var str = "";
-                var i = 0;
+            //$('body').on('click', '#BtnDeleteAll', function (e) {
+            //    e.preventDefault();
+            //    var str = "";
+            //    var i = 0;
 
-                // Chỉ lấy các checkbox đã được chọn
-                var checkbox = $(this).parents('.card').find('input.cbkItem:checked');
+            //    // Chỉ lấy các checkbox đã được chọn
+            //    var checkbox = $(this).parents('.card').find('input.cbkItem:checked');
 
-                checkbox.each(function () {
-                    var _id = $(this).val();
-                    if (i === 0) {
-                        str += _id;
-                    } else {
-                        str += "," + _id;
-                    }
-                    i++;
-                });
-                if (str.length > 0) {
-                    var conf = confirm("Do you want to delete these records?");
-                    if (conf === true) {
-                        $.ajax({
-                            url: '/admin/new/deleteAll',
-                            type: 'POST',
-                            data: { ids: str },
-                            success: function (rs) {
-                                if (rs.success) {
-                                    location.reload();
-                                }
-                            }
-                        });
-                    }
-                }
-            });
-            $('body').on('change', '#SelectedAll', function () {
-                var checkStatus = this.checked;
-                var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
-                checkbox.each(function () {
-                    this.checked = checkStatus;
-                    if (this.checked) {
-                        checkbox.attr('selected', 'check');
-                    } else {
-                        checkbox.attr('selected', '');
-                    }
-                });
-            });
+            //    checkbox.each(function () {
+            //        var _id = $(this).val();
+            //        if (i === 0) {
+            //            str += _id;
+            //        } else {
+            //            str += "," + _id;
+            //        }
+            //        i++;
+            //    });
+            //    if (str.length > 0) {
+            //        var conf = confirm("Do you want to delete these records?");
+            //        if (conf === true) {
+            //            $.ajax({
+            //                url: '/admin/new/deleteAll',
+            //                type: 'POST',
+            //                data: { ids: str },
+            //                success: function (rs) {
+            //                    if (rs.success) {
+            //                        location.reload();
+            //                    }
+            //                }
+            //            });
+            //        }
+            //    }
+            //});
+            //$('body').on('change', '#SelectedAll', function () {
+            //    var checkStatus = this.checked;
+            //    var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
+            //    checkbox.each(function () {
+            //        this.checked = checkStatus;
+            //        if (this.checked) {
+            //            checkbox.attr('selected', 'check');
+            //        } else {
+            //            checkbox.attr('selected', '');
+            //        }
+            //    });
+            //});
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
                 var conf = confirm("Do you want to deleted this record?");
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/new/delete',
+                        url: '/admin/productcategory/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {
@@ -160,26 +176,26 @@
                 }
             });
 
-            $('body').on('click', '.btnActive', function (e) {
-                e.preventDefault();
-                var btn = $(this); // <-- Đã sửa đúng
-                var id = btn.data("id");
-                $.ajax({
-                    url: '/admin/new/IsActive',
-                    type: 'POST',
-                    data: { id: id },
-                    success: function (rs) {
-                        if (rs.success) {
-                            if (rs.isActive) {
-                                btn.html("<i class='fa fa-check text-success'></i>");
-                            }
-                            else {
-                                btn.html("<i class='fas fa-times text-danger'></i>");
-                            }
-                        }
-                    }
-                });
-            });
+            //$('body').on('click', '.btnActive', function (e) {
+            //    e.preventDefault();
+            //    var btn = $(this); // <-- Đã sửa đúng
+            //    var id = btn.data("id");
+            //    $.ajax({
+            //        url: '/admin/new/IsActive',
+            //        type: 'POST',
+            //        data: { id: id },
+            //        success: function (rs) {
+            //            if (rs.success) {
+            //                if (rs.isActive) {
+            //                    btn.html("<i class='fa fa-check text-success'></i>");
+            //                }
+            //                else {
+            //                    btn.html("<i class='fas fa-times text-danger'></i>");
+            //                }
+            //            }
+            //        }
+            //    });
+            //});
         });
     </script>
 }

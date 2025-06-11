@@ -1,6 +1,6 @@
 ﻿@model WebBanHang.Models.EF.New
 @{
-    ViewBag.Title = "Edit news";
+    ViewBag.Title = "Add news";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -16,7 +16,7 @@
             <a href="/admin/new" class="nav-link">News</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/new/edit" class="nav-link">Edit</a>
+            <a href="/admin/new/add" class="nav-link">Add new</a>
         </li>
     </ul>
 }
@@ -25,12 +25,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Edit news</h1>
+                <h1>Add new news</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/admin/new">News</a></li>
-                    <li class="breadcrumb-item active">Edit news</li>
+                    <li class="breadcrumb-item active">Add new</li>
                 </ol>
             </div>
         </div>
@@ -43,21 +43,16 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">New infomation edited to news</h3>
+            <h3 class="card-title">New infomation added to news</h3>
 
         </div>
         <div class="card-body">
-            @if (Model != null)
-            {
-                <div class="bs-stepper-content">
-                    @using (Html.BeginForm("Edit", "New", FormMethod.Post, new { }))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true)
-                        @Html.HiddenFor(x => x.Id)
-                        @Html.HiddenFor(x => x.CategoryId)
-                        @Html.HiddenFor(x => x.CreatedDate)
-                        <!-- your steps content here -->
+            <div class="bs-stepper-content">
+                @using (Html.BeginForm("Add", "New", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <!-- your steps content here -->
                     <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
                         <div class="form-group">
                             <label for="exampleInputEmail1">News title</label>
@@ -98,16 +93,16 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Status</label>
-                            @Html.CheckBoxFor(x => x.IsActive)
+                            @Html.CheckBoxFor(x => x.IsActive, new { @checked = "checked" })
                         </div>
                         <div class="form-group">
                             <a href="/admin/new" class="btn btn-danger">Back</a>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
+
                     </div>
-                    }
-                </div>
-            }
+                }
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
