@@ -20,5 +20,6 @@ namespace WebBanHang.Models.EF
 
         public virtual Order Orders { get; set; }
         public virtual Product Product { get; set; }
+
     }
 }

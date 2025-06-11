@@ -185,6 +185,7 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -242,6 +243,10 @@
     <Compile Include="Migrations\202506080701023_updateProduct3.cs" />
     <Compile Include="Migrations\202506080701023_updateProduct3.Designer.cs">
       <DependentUpon>202506080701023_updateProduct3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506100245431_data1.cs" />
+    <Compile Include="Migrations\202506100245431_data1.Designer.cs">
+      <DependentUpon>202506100245431_data1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2895,6 +2900,72 @@
     <Content Include="Content\clients\plugins\select2\js\select2.full.min.js" />
     <Content Include="Content\clients\plugins\select2\js\select2.js" />
     <Content Include="Content\clients\plugins\select2\js\select2.min.js" />
+    <Content Include="Content\clients\plugins\select2\select2\css\select2.css" />
+    <Content Include="Content\clients\plugins\select2\select2\css\select2.min.css" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\af.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ar.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\az.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\bg.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\bn.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\bs.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\build.txt" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ca.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\cs.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\da.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\de.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\dsb.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\el.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\en.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\es.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\et.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\eu.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\fa.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\fi.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\fr.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\gl.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\he.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\hi.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\hr.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\hsb.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\hu.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\hy.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\id.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\is.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\it.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ja.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ka.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\km.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ko.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\lt.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\lv.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\mk.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ms.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\nb.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ne.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\nl.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\pl.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ps.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\pt-BR.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\pt.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ro.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\ru.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sk.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sl.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sq.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sr.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\sv.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\th.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\tk.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\tr.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\uk.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\vi.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\zh-CN.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\i18n\zh-TW.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\select2.full.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\select2.full.min.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\select2.js" />
+    <Content Include="Content\clients\plugins\select2\select2\js\select2.min.js" />
     <Content Include="Content\clients\plugins\sparklines\sparkline.js" />
     <Content Include="Content\clients\plugins\sparklines\sparkline.mjs" />
     <Content Include="Content\clients\plugins\summernote\lang\summernote-ar-AR.js" />
@@ -3185,6 +3256,9 @@
     <Content Include="Areas\Admin\Views\Product\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductImage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutEmpty.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -3196,6 +3270,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\images\1749101248-xe-cau-tan-de-58140-width1900height1424.jpg" />
+    <Content Include="Uploads\images\1749105460-w-a58i4184-63706-width1200height800.jpg" />
+    <Content Include="Uploads\images\1749105683-hinh-a-766-width698height544.jpg" />
+    <Content Include="Uploads\images\bong_tai_vang_1.png" />
+    <Content Include="Uploads\images\nhan_cuoi_4.png" />
+    <Content Include="Uploads\_thumbs\Images\1749101248-xe-cau-tan-de-58140-width1900height1424.jpg" />
+    <Content Include="Uploads\_thumbs\Images\1749105460-w-a58i4184-63706-width1200height800.jpg" />
+    <Content Include="Uploads\_thumbs\Images\1749105683-hinh-a-766-width698height544.jpg" />
+    <Content Include="Uploads\_thumbs\Images\bong_tai_vang_1.png" />
+    <Content Include="Uploads\_thumbs\Images\nhan_cuoi_4.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3235,6 +3319,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
+    <Folder Include="Uploads\files\" />
+    <Folder Include="Uploads\flash\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -3302,6 +3388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506080701023_updateProduct3.resx">
       <DependentUpon>202506080701023_updateProduct3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506100245431_data1.resx">
+      <DependentUpon>202506100245431_data1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

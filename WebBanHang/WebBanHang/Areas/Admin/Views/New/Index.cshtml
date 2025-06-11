@@ -6,7 +6,22 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/new" class="nav-link">News</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Edit</a>
+        </li>
+    </ul>
+}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -43,7 +58,7 @@
                     @using (Html.BeginForm("Index", "New", FormMethod.Get, new { }))
                     {
                         <div class="input-group input-group-sm">
-                            @Html.TextBox("searchText", (string)ViewBag.searchText, new {@class="form-control"})
+                            @Html.TextBox("searchText", (string)ViewBag.searchText, new { @class = "form-control" })
                             @*<input type="text" name="searchText" class="form-control" />*@
                             <span class="input-group-append">
                                 <button type="submit" class="btn btn-info btn-flat">Search</button>

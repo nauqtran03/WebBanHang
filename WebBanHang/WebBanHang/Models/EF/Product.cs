@@ -11,6 +11,11 @@ namespace WebBanHang.Models.EF
     [Table("tb_Product")]
     public class Product : CommonAbstract
     {
+        public Product() 
+        {
+            this.ProductImages = new HashSet<ProductImage>();
+            this.OrderDetails = new HashSet<OrderDetail>();
+        }
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -44,5 +49,7 @@ namespace WebBanHang.Models.EF
 
 
         public virtual ProductCategory ProductCategorys {  get; set; }
+        public virtual ICollection<ProductImage> ProductImages {  get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails {  get; set; }
     }
 }
