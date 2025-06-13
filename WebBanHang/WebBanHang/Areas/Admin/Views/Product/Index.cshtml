@@ -80,6 +80,8 @@
                         <th>Price</th>
                         <th>PriceSale</th>
                         <th>Creation date</th>
+                        <th>Home</th>
+                        <th>Sale</th>
                         <th>Status</th>
                         <th style="width:150px"></th>
                     </tr>
@@ -90,7 +92,9 @@
                         var i = (ViewBag.PageNumber - 1) * ViewBag.PageSize + 1;
                         foreach (var item in Model)
                         {
-                            var strCheck = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckHome = item.IsHome ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckActive = item.IsActive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            var strCheckSale = item.IsSale ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
 
                             <tr id="trow_@item.Id">
                                 <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
@@ -103,7 +107,13 @@
                                 <td>@item.PriceSale</td>
                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td class="text-center">
-                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                    <a href='#' data-id="@item.Id" class="btnHome">@Html.Raw(strCheckHome)</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href='#' data-id="@item.Id" class="btnSale">@Html.Raw(strCheckSale)</a>
+                                </td>
+                                <td class="text-center">
+                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheckActive)</a>
                                 </td>
                                 <td>
                                     <a href="/admin/product/edit/@item.Id" class="btn btn-sm btn-primary">Edit</a>
@@ -243,6 +253,44 @@
                                 btn.html("<i class='fa fa-check text-success'></i>");
                             }
                             else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                            }
+                        }
+                    }
+                });
+            });
+            $('body').on('click', '.btnHome', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data('id');
+                $.ajax({
+                    url: '/admin/product/IsHome',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isHome) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            } else {
+                                btn.html("<i class='fas fa-times text-danger'></i>");
+                            }
+                        }
+                    }
+                });
+            });
+            $('body').on('click', '.btnSale', function (e) {
+                e.preventDefault();
+                var btn = $(this);
+                var id = btn.data('id');
+                $.ajax({
+                    url: '/admin/product/IsSale',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        if (rs.success) {
+                            if (rs.isSale) {
+                                btn.html("<i class='fa fa-check text-success'></i>");
+                            } else {
                                 btn.html("<i class='fas fa-times text-danger'></i>");
                             }
                         }

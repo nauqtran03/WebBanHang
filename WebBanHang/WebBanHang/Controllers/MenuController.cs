@@ -25,5 +25,10 @@ namespace WebBanHang.Controllers
             var item = _dbConnect.ProductCategories.ToList();
             return PartialView("_MenuProductCategory",item);
         }
+        public ActionResult MenuArrival()
+        {
+            var item = _dbConnect.ProductCategories.ToList();
+            return PartialView("_MenuArrival", item);
+        }
     }
 }
