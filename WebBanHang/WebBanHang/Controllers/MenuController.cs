@@ -20,10 +20,19 @@ namespace WebBanHang.Controllers
             var item = _dbConnect.Categories.OrderBy(x => x.Position).ToList();
             return PartialView("_MenuTop", item);
         }
-        public ActionResult MenuProductCategory() 
+        public ActionResult MenuProductCategory()
         {
             var item = _dbConnect.ProductCategories.ToList();
-            return PartialView("_MenuProductCategory",item);
+            return PartialView("_MenuProductCategory", item);
+        }
+        public ActionResult MenuProductLeft(int? id)
+        {
+            if (id != null)
+            {
+                ViewBag.CateId = id;
+            }
+            var item = _dbConnect.ProductCategories.ToList();
+            return PartialView("_MenuProductLeft", item);
         }
         public ActionResult MenuArrival()
         {
