@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebBanHang.Models.ShoppingCartItem>
+
+<div class="table-responsive">
+    <table class="table table-bordered align-middle text-center">
+        <thead class="table-pink">
+            <tr>
+                <th>Index</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th style="width:120px;">Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="cartBody">
+            @if (Model != null && Model.Any())
+            {
+                var i = 0;
+                var total = decimal.Zero;
+                foreach (var item in Model)
+                {
+                    total += item.TotalPrice;
+                    <tr id="trow_@item.ProductId">
+                        <td>@(++i)</td>
+                        <td><img src="@item.ProductImg" alt="" style="width:60px; height:auto;" class="img-thumbnail" /></td>
+                        <td>
+                            <a href="/detail-product/@item.Alias-p@(item.ProductId)" class="text-decoration-none">@item.ProductName</a>
+                        </td>
+                        <td>@item.CategoryName</td>
+                        <td>$@item.Price</td>
+                        <td>
+                            <div class="input-group" style="max-width: 120px; margin: auto;">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btnDecrease" data-id="@item.ProductId" type="button">-</button>
+                                </span>
+                                <input type="text"
+                                       class="form-control text-center quantity-input"
+                                       id="Quantity_@item.ProductId"
+                                       value="@item.Quantity"
+                                       readonly
+                                       style="min-width: 40px; color: black;" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btnIncrease" data-id="@item.ProductId" type="button">+</button>
+                                </span>
+                            </div>
+                        </td>
+                        <th id="Subtotal_@item.ProductId">$@item.TotalPrice</th>
+                        <td>
+                            <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-outline-danger btnDelete">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+                <tr class="table">
+                    <th colspan="6" class="text-end">Total:</th>
+                    <th id="totalPrice" colspan="1">$@total</th>
+                    <th></th>
+                </tr>
+            }
+        </tbody>
+
+        <tr id="noItemRow" style="display:@(Model != null && Model.Any() ? "none" : "table-row")">
+            <td colspan="8">
+                <div class="alert alert-warning mb-0">
+                    <i class="bi bi-exclamation-circle"></i> There are no items in your cart.
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="d-flex justify-content-end mt-3">
+    <a href="#" class="btn btn-danger me-2 btnDeleteAll">Delete All</a>
+    <a href="#" class="btn btn-success btnCheckout">Checkout</a>
+</div>
