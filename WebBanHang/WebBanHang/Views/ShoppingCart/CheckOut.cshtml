@@ -1,0 +1,91 @@
+﻿
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+<style>
+    .error{color:red;}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
+
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix">
+
+            <!-- Breadcrumbs -->
+
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Shopping cart</a></li>
+                </ul>
+            </div>
+
+            <!-- Sidebar -->
+            <!-- Main Content -->
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Checkout</h2>
+                    <p>Please verify that your information is correct!</p>
+                </div>
+            </div>
+            <hr />
+            @if (ViewBag.CheckCart != null)
+            {
+                <div class="row">
+                    <div class="show_fail"></div>
+                    @Html.Action("Partial_Checkout", "ShoppingCart")
+                    <div class="col-md-7">
+                        @Html.Action("Partial_Item_Checkout", "ShoppingCart")
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning text-center">
+                    <i class="glyphicon glyphicon-info-sign"></i> You have no items in your shopping cart. Please return to the product page to <a href="/product">continue shopping</a>.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/assets/js/categories_custom.js"></script>
+    <script>
+        function OnFailure(rs) {
+            if (!rs.success) {
+                $('#show_fail').html("Failed to place order. Please check your information and try again.");
+            }
+        }
+        $(document).ready(function () {
+            $('#MyForm').validate({
+                rules: {
+                    'CustomerName': {
+                        required: true
+                    },
+                    'Phone': {
+                        required: true
+                    },
+                    'Address': {
+                        required: true
+                    },
+                    'Email': {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages:{
+                    'CustomerName': 'Name is required',
+                    'Phone': 'Phone is required',
+                    'Address': 'Address is required',
+                    'Email': 'Please enter a valid email address'
+                }
+            });
+        });
+    </script>
+}
+

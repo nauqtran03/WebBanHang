@@ -1,25 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
+using WebBanHang.Models.EF;
 
 namespace WebBanHang.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        private ApplicationDbContext _dbConnect = new ApplicationDbContext();
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            
             return View();
         }
+        public ActionResult CheckOut()
+        {
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if (cart != null && cart.Item.Any())
+            {
+                ViewBag.CheckCart = cart;
+            }
+            return View();
+        }
+        public ActionResult CheckOutSuccess()
+        { 
+            return View();
+        }
+        public ActionResult Partial_CheckOut()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CheckOut(OrderViewModel req)
+        {
+            var code = new {success = false, Code = -1};
+            if (ModelState.IsValid)
+            {
+                ShoppingCart cart = (ShoppingCart)Session["Cart"];
+                if (cart != null && cart.Item.Any())
+                {
+                    Order order = new Order();
+                    order.CustomerName = req.CustomerName;
+                    order.Phone = req.Phone;
+                    order.Address = req.Address;
+                    cart.Item.ForEach(x => order.OrderDetails.Add(new OrderDetail
+                    {
+                        ProductId = x.ProductId,
+                        Quantity = x.Quantity,
+                        Price = x.Price,
+                    }));
+                    order.TotalAmount = cart.Item.Sum(x => (x.Price * x.Quantity));
+                    order.TypeMethod = req.TypeMethod;
+                    order.CreatedDate = DateTime.Now;
+                    order.CreatedBy = req.Phone;
+                    order.ModifiedDate = DateTime.Now;
+                    Random rd = new Random();
+                    order.Code = "QN" + rd.Next(0,9)+ rd.Next(0, 9)+rd.Next(0, 9)+rd.Next(0, 9)+ rd.Next(0, 9);
+                    _dbConnect.Orders.Add(order);
+                    _dbConnect.SaveChanges();
+                    cart.ClearCart();
+                    return RedirectToAction("CheckOutSuccess");
+                }       
+            }
+            return Json(code);
+        }
+        public ActionResult Partial_Item_Checkout()
+        {
+            ShoppingCart cart = (ShoppingCart)Session["Cart"];
+            if (cart != null && cart.Item.Any()) 
+            {
+                return PartialView(cart.Item);
+            }
+            return PartialView();
+            }
         public ActionResult Partial_Item_Cart()
         {
             ShoppingCart cart = (ShoppingCart)Session["Cart"];
-            if (cart != null)
+            if (cart != null && cart.Item.Any())
             {
+                ViewBag.CheckCart = cart;
                 return PartialView(cart.Item);
             }
             return PartialView();
@@ -106,9 +170,12 @@ namespace WebBanHang.Controllers
             if (cart != null)
             { 
                 cart.ClearCart();
-                return Json(new {success= true, msg = "Do you want to remove all item from your cart?" });
+                return Json(new { success = true });
             }
-            return Json(new {success= false, msg = "There are no items in your cart" });
+            else
+            {
+                return Json(new { success = false, msg = "There are no items in your cart" });
+            }
         }
     }
 }

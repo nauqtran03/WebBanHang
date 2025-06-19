@@ -25,6 +25,7 @@ namespace WebBanHang.Models.EF
         [StringLength(250)]
         public string Image { get; set; }
         public int CategoryId { get; set; }
+        public int ViewCount { get; set; }
         [StringLength(250)]
         public string SeoTitle { get; set; }
         [StringLength(500)]

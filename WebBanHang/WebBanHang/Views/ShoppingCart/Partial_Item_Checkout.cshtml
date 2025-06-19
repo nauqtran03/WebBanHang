@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebBanHang.Models.ShoppingCartItem>
+
+@if (Model != null && Model.Any())
+{
+    var total = 0m;
+    <h4>Shopping Cart <span style="float:right;">@Model.Count()</span></h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+                foreach (var item in Model)
+                {
+                    total += item.TotalPrice;
+                    <tr>
+                        <td>@index</td>
+                        <td>
+                            @(item.ProductName.Length > 45 ? item.ProductName.Substring(0, 45) + "..." : item.ProductName)
+                        </td>
+                        <td>$@item.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>$@item.TotalPrice</td>
+                    </tr>
+                    index++;
+                }
+            }
+            <tr>
+                <td colspan="4" class="text-right"><strong>Total:</strong></td>
+                <td><strong>$@total</strong></td>
+            </tr>
+        </tbody>
+    </table>
+}

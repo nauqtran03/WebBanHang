@@ -252,9 +252,18 @@
     <Compile Include="Migrations\202506100245431_data1.Designer.cs">
       <DependentUpon>202506100245431_data1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506191457262_UpdatePayment.cs" />
+    <Compile Include="Migrations\202506191457262_UpdatePayment.Designer.cs">
+      <DependentUpon>202506191457262_UpdatePayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506191632020_CreatTableReport.cs" />
+    <Compile Include="Migrations\202506191632020_CreatTableReport.Designer.cs">
+      <DependentUpon>202506191632020_CreatTableReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\Filter.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\EF\Advertisement.cs" />
     <Compile Include="Models\EF\Category.cs" />
     <Compile Include="Models\EF\CommonAbstract.cs" />
@@ -266,10 +275,12 @@
     <Compile Include="Models\EF\Product.cs" />
     <Compile Include="Models\EF\ProductCategory.cs" />
     <Compile Include="Models\EF\ProductImage.cs" />
+    <Compile Include="Models\EF\Report.cs" />
     <Compile Include="Models\EF\Subscribe.cs" />
     <Compile Include="Models\EF\SystemSetting.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -3429,6 +3440,10 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Partial_Item_Cart.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_Item_Checkout.cshtml" />
+    <Content Include="Views\ShoppingCart\Partial_CheckOut.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOutSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3506,6 +3521,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506100245431_data1.resx">
       <DependentUpon>202506100245431_data1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506191457262_UpdatePayment.resx">
+      <DependentUpon>202506191457262_UpdatePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506191632020_CreatTableReport.resx">
+      <DependentUpon>202506191632020_CreatTableReport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

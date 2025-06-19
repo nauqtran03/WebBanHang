@@ -29,6 +29,7 @@ namespace WebBanHang.Models
         }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Report> Reports { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Contact> Contacts{ get; set; }
         public DbSet<New> News { get; set; }

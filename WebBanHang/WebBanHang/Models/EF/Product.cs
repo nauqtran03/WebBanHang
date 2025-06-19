@@ -25,7 +25,6 @@ namespace WebBanHang.Models.EF
         [StringLength(250)]
         public string Alias { get; set; }
         [StringLength(50)]
-
         public string ProductCode { get; set; }
         public int ProductCategoryId {  get; set; }
         public string Description { get; set; }
@@ -39,6 +38,7 @@ namespace WebBanHang.Models.EF
         public bool IsSale {  get; set; }
         public bool IsFeature {  get; set; }
         public int Quantity { get; set; }
+        public int ViewCount { get; set; }
         [StringLength(250)]
         public string SeoTitle { get; set; }
         [StringLength(500)]
