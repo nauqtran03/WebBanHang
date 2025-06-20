@@ -7,6 +7,7 @@ using System.Web;
 
 namespace WebBanHang.Models.EF
 {
+    [Table("tb_Report")]
     public class Report
     {
         [Key]

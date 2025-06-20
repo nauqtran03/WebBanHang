@@ -260,6 +260,10 @@
     <Compile Include="Migrations\202506191632020_CreatTableReport.Designer.cs">
       <DependentUpon>202506191632020_CreatTableReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506201616182_AddTable.cs" />
+    <Compile Include="Migrations\202506201616182_AddTable.Designer.cs">
+      <DependentUpon>202506201616182_AddTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\Filter.cs" />
@@ -3527,6 +3531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506191632020_CreatTableReport.resx">
       <DependentUpon>202506191632020_CreatTableReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506201616182_AddTable.resx">
+      <DependentUpon>202506201616182_AddTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
