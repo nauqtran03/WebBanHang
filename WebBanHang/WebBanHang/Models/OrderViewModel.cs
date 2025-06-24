@@ -13,6 +13,7 @@ namespace WebBanHang.Models
         [Required(ErrorMessage = "Phone is required")]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Address is required")]
+        public string Email { get; set; }
         public string Address { get; set; }
         public int TypeMethod {  get; set; }
     }

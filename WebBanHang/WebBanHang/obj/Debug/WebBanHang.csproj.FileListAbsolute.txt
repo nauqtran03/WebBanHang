@@ -248,3 +248,4 @@ D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\Dapper.xml
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\Microsoft.Bcl.AsyncInterfaces.xml
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\System.Threading.Tasks.Extensions.xml
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.UpdateEmail.resources

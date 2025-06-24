@@ -276,6 +276,10 @@
     <Compile Include="Migrations\202506201616182_AddTable.Designer.cs">
       <DependentUpon>202506201616182_AddTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506241214402_UpdateEmail.cs" />
+    <Compile Include="Migrations\202506241214402_UpdateEmail.Designer.cs">
+      <DependentUpon>202506241214402_UpdateEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\AnalyticsAccess.cs" />
@@ -304,6 +308,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Common.cs" />
     <Content Include="Content\assets\images\banner_1.jpg" />
     <Content Include="Content\assets\images\banner_2.jpg" />
     <Content Include="Content\assets\images\banner_3.jpg" />
@@ -3234,6 +3239,8 @@
     <Content Include="Content\clients\plugins\uplot\uPlot.iife.min.js" />
     <Content Include="Content\clients\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\templates\send1.html" />
+    <Content Include="Content\templates\send2.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -3549,6 +3556,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506201616182_AddTable.resx">
       <DependentUpon>202506201616182_AddTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506241214402_UpdateEmail.resx">
+      <DependentUpon>202506241214402_UpdateEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
