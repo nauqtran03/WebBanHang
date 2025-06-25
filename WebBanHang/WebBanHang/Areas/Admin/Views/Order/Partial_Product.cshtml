@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebBanHang.Models.EF.OrderDetail>
+    @{ 
+        var i = 0;
+    }
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Product name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>SubTotal</th>
+            </tr>
+        </thead>
+        <tbody>
+              
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>@item.Product.Title</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>$@(item.Price*item.Quantity)</td>
+                    <td></td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+}
