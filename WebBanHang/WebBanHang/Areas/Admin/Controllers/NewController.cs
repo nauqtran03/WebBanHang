@@ -9,6 +9,7 @@ using PagedList;
 
 namespace WebBanHang.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class NewController : Controller
     {
         private ApplicationDbContext _dbConnect = new ApplicationDbContext();
@@ -43,7 +44,7 @@ namespace WebBanHang.Areas.Admin.Controllers
                 model.CreatedDate = DateTime.Now;
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = WebBanHang.Models.Common.Filter.FilterChar(model.Title);
-                model.CategoryId = 2;
+                model.CategoryId = 6;
                 _dbConnect.News.Add(model);
                 _dbConnect.SaveChanges();
                 return RedirectToAction("Index");

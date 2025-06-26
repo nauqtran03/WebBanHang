@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity.EntityFramework
-@model IdentityRole
+@model WebBanHang.Models.CreateAccountViewModel
 @{
     ViewBag.Title = "Add Account";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -25,7 +25,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Add role</h3>
+            <h3 class="card-title">Add new account</h3>
         </div>
         <div class="card-body">
             @using (Html.BeginForm("Create", "Account", FormMethod.Post))
@@ -33,8 +33,31 @@
                 @Html.ValidationSummary(false)
                 @Html.AntiForgeryToken()
                 <div class="form-group">
-                    <label>Role name</label>
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    <label>UserName</label>
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                </div><div class="form-group">
+                    <label>FullName</label>
+                    @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    @Html.DropDownListFor(x => x.Role, ViewBag.Role as SelectList, "---Select Role---", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>PassWord</label>
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Re-enter PassWord</label>
+                    @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">Add</button>

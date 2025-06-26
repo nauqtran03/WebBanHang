@@ -8,6 +8,7 @@ using WebBanHang.Models.EF;
 
 namespace WebBanHang.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin,Employee")]
     public class PostController : Controller
     {
         private ApplicationDbContext _dbConnect = new ApplicationDbContext();
