@@ -202,8 +202,10 @@
     <Compile Include="Areas\Admin\Controllers\ProductImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingSystemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatisticalController.cs" />
     <Compile Include="Common\SettingHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -289,6 +291,14 @@
     <Compile Include="Migrations\202506270054042_updatesubcribe.cs" />
     <Compile Include="Migrations\202506270054042_updatesubcribe.Designer.cs">
       <DependentUpon>202506270054042_updatesubcribe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506280317464_originalprice.cs" />
+    <Compile Include="Migrations\202506280317464_originalprice.Designer.cs">
+      <DependentUpon>202506280317464_originalprice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506281359471_updateLink.cs" />
+    <Compile Include="Migrations\202506281359471_updateLink.Designer.cs">
+      <DependentUpon>202506281359471_updateLink.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3490,6 +3500,7 @@
     <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SettingSystem\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SettingSystem\Partial_Setting.cshtml" />
+    <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -3567,6 +3578,9 @@
     <Content Include="Views\Home\Refresh.cshtml" />
     <Content Include="Views\New\Partial_News_Home.cshtml" />
     <Content Include="Views\Home\Partial_Subscribe.cshtml" />
+    <Content Include="Views\New\Index.cshtml" />
+    <Content Include="Views\New\Detail.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3659,6 +3673,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506270054042_updatesubcribe.resx">
       <DependentUpon>202506270054042_updatesubcribe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506280317464_originalprice.resx">
+      <DependentUpon>202506280317464_originalprice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506281359471_updateLink.resx">
+      <DependentUpon>202506281359471_updateLink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -91,21 +91,26 @@
                                             @Html.TextAreaFor(x => x.Detail, new { @class = "form-control", @id = "txtDetail" })
                                             @Html.ValidationMessageFor(x => x.Detail, null, new { @class = "text-danger" })
                                         </div>
-                                        <div class="row mb-4">
-                                            <div class="col-4">
+                                        <div class="row">
+                                            <div class="col-3">
                                                 <label for="exampleInputEmail1">Quantity</label>
                                                 @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", @Value = "1" })
                                                 @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <label for="exampleInputEmail1">Price</label>
                                                 @Html.TextBoxFor(x => x.Price, new { @class = "form-control auto", @id = "Price" })
                                                 @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-3">
                                                 <label for="exampleInputEmail1">Price sale</label>
                                                 @Html.TextBoxFor(x => x.PriceSale, new { @class = "form-control auto", @id = "PriceSale" })
                                                 @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-3">
+                                                <label for="exampleInputEmail1">Original Price</label>
+                                                @Html.TextBoxFor(x => x.OriginalPrice, new { @class = "form-control auto", @id = "OriginalPrice" })
+                                                @Html.ValidationMessageFor(x => x.OriginalPrice, null, new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -209,7 +214,13 @@
 
                 unformatOnSubmit: true
             });
+            const price = new AutoNumeric('#OriginalPrice', {
+                decimalPlaces: 2,
+                digitGroupSeparator: '.',
+                decimalCharacter: ',',
 
+                unformatOnSubmit: true
+            });
             const priceSale = new AutoNumeric('#PriceSale', {
                 decimalPlaces: 2,
                 digitGroupSeparator: '.',

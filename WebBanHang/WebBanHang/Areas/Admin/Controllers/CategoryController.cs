@@ -40,7 +40,7 @@ namespace WebBanHang.Areas.Admin.Controllers
         }
         public ActionResult Edit(int id) 
         {
-            var item = _dbConnect.Categories.FirstOrDefault(c => c.Id == id);
+            var item = _dbConnect.Categories.Find(id);
 
             return View(item);
         }
@@ -54,6 +54,7 @@ namespace WebBanHang.Areas.Admin.Controllers
                 model.ModifiedDate = DateTime.Now;
                 model.Alias = WebBanHang.Models.Common.Filter.FilterChar(model.Title);
                 _dbConnect.Entry(model).Property(x=>x.Title).IsModified = true;
+                _dbConnect.Entry(model).Property(x => x.Link).IsModified = true;
                 _dbConnect.Entry(model).Property(x=>x.Description).IsModified = true;
                 _dbConnect.Entry(model).Property(x=>x.Alias).IsModified = true;
                 _dbConnect.Entry(model).Property(x=>x.SeoDescription).IsModified = true;
@@ -62,6 +63,7 @@ namespace WebBanHang.Areas.Admin.Controllers
                 _dbConnect.Entry(model).Property(x=>x.Position).IsModified = true;
                 _dbConnect.Entry(model).Property(x => x.ModifiedDate).IsModified = true;
                 _dbConnect.Entry(model).Property(x => x.ModifierBy).IsModified = true;
+                
                 _dbConnect.SaveChanges();
                 return RedirectToAction("Index");
             }

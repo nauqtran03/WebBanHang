@@ -250,3 +250,5 @@ D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\System.Runtime.CompilerServi
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\bin\System.Threading.Tasks.Extensions.xml
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.UpdateEmail.resources
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.updatesubcribe.resources
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.originalprice.resources
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.updateLink.resources
