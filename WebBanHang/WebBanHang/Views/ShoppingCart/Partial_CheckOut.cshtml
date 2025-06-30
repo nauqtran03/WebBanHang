@@ -3,19 +3,11 @@
     @using (Ajax.BeginForm("CheckOut", "ShoppingCart", new AjaxOptions
     {
         HttpMethod = "POST",
-        UpdateTargetId = "load_data",
         OnComplete = "OnSuccessCO",
-        OnFailure = "OnFailure"
-    }, new { @Id = "MyForm" }))
+        OnFailure = "OnFailure",
+        OnBegin = "OnBeginCO",
+    }, htmlAttributes: new { id = "MyForm" }))
     {
-        <script>
-            function OnSuccessCO() {
-                location.href = "/ShoppingCart/CheckOutSuccess";
-            }
-            function OnFailure() {
-
-            }
-        </script>
         @Html.AntiForgeryToken()
         <h3>Information Customer</h3>
         <div class="form-group">
@@ -35,15 +27,45 @@
             <input type="text" name="Email" required class="form-control" autocomplete="off" />
         </div>
         <div class="form-group">
-            <label>Choose Payment Method</label>
-            <select class="form-control" name="TypeMethod">
+            <label>Payment Method</label>
+            <select class="form-control" name="TypeMethod" id="drTypeMethod">
                 <option value="1" selected>COD</option>
                 <option value="2">Bank Transfer</option>
             </select>
         </div>
+        <div class="form-group" id="load_form_payment" style="display:none">
+            <h4>Select payment method</h4>
+            <h5>Option 1: Redirect to VNPay to select a payment method</h5>
+            <label><input type="radio" name="TypePayment" value="0" checked /> VNPayQR payment gateway</label>
+
+            <h5>Option 2: Select payment method on the Merchant's site</h5>
+            <label><input type="radio" name="TypePayment" value="1" /> Pay via VNPayQR-supported app</label><br />
+            <label><input type="radio" name="TypePayment" value="2" /> ATM - Domestic bank account</label><br />
+            <label><input type="radio" name="TypePayment" value="3" /> Pay via international card</label><br />
+        </div>
+        <div class="form-group" id="load_send"></div>
         <div class="form-group">
-            <button type="submit" class="btn btn-block btn-success">Place Order</button>
+            <button type="submit" class="btn btn-block btn-success" id="btnCheckOut">Place Order</button>
         </div>
     }
-
 </div>
+
+<script>
+    function OnBeginCO() {
+        $('#btnCheckOut').attr("disabled", "disabled");
+        $('#load_send').html("<h2>Sending......</h2>");
+    }
+
+        function OnSuccessCO(res) {
+            if (res.success) {
+                if (res.code == 1) {
+                    location.href = res.Url; // Về trang cảm ơn
+                }
+                else if (res.code == 2) {
+                    location.href = res.Url; // Redirect sang VNPAY
+                }
+            }
+        }
+ 
+
+</script>

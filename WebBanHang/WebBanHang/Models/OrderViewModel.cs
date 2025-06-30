@@ -16,5 +16,6 @@ namespace WebBanHang.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public int TypeMethod {  get; set; }
+        public int TypePayment { get; set; }
     }
 }

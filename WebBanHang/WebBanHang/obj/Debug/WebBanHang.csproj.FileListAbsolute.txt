@@ -252,3 +252,4 @@ D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.updatesubcribe.resources
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.originalprice.resources
 D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.updateLink.resources
+D:\2.PROJECT\0.WebBanHang\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.AddStatusToOrder.resources

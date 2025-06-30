@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
     .error{color:red;}
@@ -62,6 +63,16 @@
             }
         }
         $(document).ready(function () {
+            $('body').on('change', '#drTypeMethod', function () {
+                var type = $(this).val();
+                $('load_form_payment').hide();
+                if (type == "2") {
+                    $('#load_form_payment').show();
+                } else {
+          
+                        $('#load_form_payment').hide();
+}
+                });
             $('#MyForm').validate({
                 rules: {
                     'CustomerName': {

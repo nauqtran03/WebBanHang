@@ -26,6 +26,7 @@ namespace WebBanHang.Models.EF
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
         public string Email { get; set; }
+        public string Status { get; set; }
         public decimal TotalAmount { get; set; }
         public int Quantity {  get; set; }
         public int TypeMethod {  get; set; }

@@ -300,6 +300,10 @@
     <Compile Include="Migrations\202506281359471_updateLink.Designer.cs">
       <DependentUpon>202506281359471_updateLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506291150480_AddStatusToOrder.cs" />
+    <Compile Include="Migrations\202506291150480_AddStatusToOrder.Designer.cs">
+      <DependentUpon>202506291150480_AddStatusToOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common\AnalyticsAccess.cs" />
@@ -322,6 +326,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\Payments\VnPayLibrary.cs" />
     <Compile Include="Models\ReportViewModel.cs" />
     <Compile Include="Models\SettingSystemViewModel.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
@@ -3502,6 +3507,7 @@
     <Content Include="Areas\Admin\Views\SettingSystem\Partial_Setting.cshtml" />
     <Content Include="Areas\Admin\Views\Statistical\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\checkout.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
@@ -3581,6 +3587,7 @@
     <Content Include="Views\New\Index.cshtml" />
     <Content Include="Views\New\Detail.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\VnPayReturn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -3679,6 +3686,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506281359471_updateLink.resx">
       <DependentUpon>202506281359471_updateLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506291150480_AddStatusToOrder.resx">
+      <DependentUpon>202506291150480_AddStatusToOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
